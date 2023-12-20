@@ -15,6 +15,7 @@ const config: Config = {
   theme: {
     colors: {
       bg: '#151c2c',
+      active: '#2e374a',
       bgSoft: '#182237',
       text: colors.white,
       textSoft: '#b7bac1',

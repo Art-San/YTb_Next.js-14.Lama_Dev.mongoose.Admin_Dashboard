@@ -2,7 +2,7 @@ import { FC } from 'react'
 import styles from './sidebar.module.css'
 
 import Image from 'next/image'
-// import MenuLink from "./menuLink/menuLink";
+import MenuLink from './menuLink/menuLink'
 
 import {
   MdDashboard,
@@ -84,7 +84,33 @@ const menuItems = [
 const Sidebar: FC = () => {
   return (
     <>
-      <div className={styles.container}>Sidebar</div>
+      {/* <div className={styles.container}>
+        <ul>
+          {menuItems.map((cat, i) => (
+            <li key={i}>
+              <span className={styles.cat}>{cat.title}</span>
+              {cat.list.map((item, i) => (
+                <MenuLink key={i} item={item} />
+              ))}
+            </li>
+          ))}
+        </ul>
+      </div> */}
+      {/*22:27*/}
+      <div className=" sticky top-10">
+        <ul>
+          {menuItems.map((cat, i) => (
+            <li key={i}>
+              <span className=" text-textSoft font-bold text-[13px] my-[10px] mx-0">
+                {cat.title}
+              </span>
+              {cat.list.map((item, i) => (
+                <MenuLink key={i} item={item} />
+              ))}
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   )
 }
