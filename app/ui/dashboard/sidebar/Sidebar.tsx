@@ -85,7 +85,20 @@ const Sidebar: FC = () => {
   return (
     <>
       {/* <div className={styles.container}>
-        <ul>
+        <div className={styles.user}>
+          <Image
+            className={styles.userImage}
+            src="/noAvatar.png"
+            alt=""
+            width={'50'}
+            height={'50'}
+          />
+          <div className="flex flex-col">
+            <span className={styles.userName}>John Doe</span>
+            <span className={styles.userTitle}>Administrator</span>
+          </div>
+        </div>
+        <ul className={styles.list}>
           {menuItems.map((cat, i) => (
             <li key={i}>
               <span className={styles.cat}>{cat.title}</span>
@@ -97,7 +110,20 @@ const Sidebar: FC = () => {
         </ul>
       </div> */}
       {/*22:27*/}
-      <div className=" sticky top-10">
+      <div className="sticky top-10">
+        <div className="flex items-center gap-5 mb-5">
+          <Image
+            className=" rounded-full object-cover"
+            src="/noAvatar.png"
+            alt=""
+            width={'50'}
+            height={'50'}
+          />
+          <div className="flex flex-col">
+            <span className=" font-medium">John Doe</span>
+            <span className=" text-xs text-textSoft">Administrator</span>
+          </div>
+        </div>
         <ul>
           {menuItems.map((cat, i) => (
             <li key={i}>
