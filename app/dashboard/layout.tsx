@@ -20,6 +20,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <Sidebar />
         </div>
         <div className="flex-col w-[78%] p-5">
+          <div className="flex-col w-[78%] p-5">
           <Navbar />
           {children}
         </div>
