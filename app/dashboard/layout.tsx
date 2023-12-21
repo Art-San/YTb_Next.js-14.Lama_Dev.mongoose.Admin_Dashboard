@@ -14,8 +14,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           {children}
         </div>
       </div>
-      {/* <div className=" flex justify-between min-h-screen">
-        <div className="flex-1 p-5 bg-bgSoft">
+      {/*TODO: не могу найти flex: 4;*/}
+      {/* <div className="flex">
+        <div className="flex-1 p-5 bg-bgSoft min-h-screen">
           <Sidebar />
         </div>
         <div className="flex-col w-[78%] p-5">

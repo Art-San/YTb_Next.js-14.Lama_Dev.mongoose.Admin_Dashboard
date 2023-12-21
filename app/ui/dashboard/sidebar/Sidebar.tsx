@@ -136,6 +136,11 @@ const Sidebar: FC = () => {
             </li>
           ))}
         </ul>
+        <button className="flex items-center gap-2.5 p-5 my-[5px] mx-0 cursor-pointer rounded-[10px] bg-none border-none text-white w-full hover:bg-active">
+          {/* <button className="flex p-5 gap-2.5 items-center mx-5px my-0 rounded-[10px] hover:bg-active"> */}
+          <MdLogout />
+          Logout
+        </button>
       </div>
     </>
   )

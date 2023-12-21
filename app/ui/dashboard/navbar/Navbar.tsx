@@ -13,7 +13,7 @@ const Navbar: FC = () => {
   const pathname = usePathname()
   return (
     <>
-      <div className={styles.container}>
+      {/* <div className={styles.container}>
         <div className={styles.title}>{pathname.split('/').pop()}</div>
         <div className={styles.menu}>
           <div className={styles.search}>
@@ -30,7 +30,7 @@ const Navbar: FC = () => {
             <MdPublic size={20} />
           </div>
         </div>
-      </div>
+      </div> */}
       {/*22222*/}
       <div className="flex p-5 bg-bgSoft items-center justify-between rounded-[10px]">
         <div className=" text-textSoft font-bold capitalize">
@@ -42,7 +42,7 @@ const Navbar: FC = () => {
             <input
               type="text"
               placeholder="Search.."
-              className="bg-transparent text-text border-none"
+              className="bg-transparent text-text"
             />
           </div>
           <div className="flex gap-5">
