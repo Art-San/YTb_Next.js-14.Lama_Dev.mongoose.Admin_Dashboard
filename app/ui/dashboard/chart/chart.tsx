@@ -93,8 +93,8 @@ const Chart = () => {
         </ResponsiveContainer>
       </div>
       {/*49:35*/}
-      <div className={styles.container}>
-        <h2 className={styles.title}>Weekly Recap</h2>
+      {/* <div className={'h-[450px] bg-bgSoft p-5 rounded-[10px]'}>
+        <h2 className={'font-extralight text-textSoft mb-5'}>Weekly Recap</h2>
         <ResponsiveContainer width="100%" height="90%">
           <LineChart
             width={500}
@@ -125,7 +125,7 @@ const Chart = () => {
             />
           </LineChart>
         </ResponsiveContainer>
-      </div>
+      </div> */}
     </>
   )
 }
