@@ -23,9 +23,9 @@ const DashboardPage: FC = () => {
         </div>
       </div>
       {/*38:36*/}
-      <div className="flex gap-5 mt-5">
-        <div className="flex flex-col w-3/4 gap-5 ">
-          <div className={styles.cards}>
+      {/* <div className="flex gap-5 mt-5">
+        <div className="flex flex-col basis-[75%] gap-5 ">
+          <div className="flex gap-5 justify-between">
             <Card />
             <Card />
             <Card />
@@ -33,10 +33,10 @@ const DashboardPage: FC = () => {
           <Transactions />
           <Chart />
         </div>
-        <div className="flex-1">
+        <div className="basis-[25%]">
           <RightBar />
         </div>
-      </div>
+      </div> */}
     </>
   )
 }

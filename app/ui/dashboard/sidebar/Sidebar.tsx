@@ -84,7 +84,7 @@ const menuItems = [
 const Sidebar: FC = () => {
   return (
     <>
-      {/* <div className={styles.container}>
+      <div className={styles.container}>
         <div className={styles.user}>
           <Image
             className={styles.userImage}
@@ -108,9 +108,9 @@ const Sidebar: FC = () => {
             </li>
           ))}
         </ul>
-      </div> */}
+      </div>
       {/*22:27*/}
-      <div className="sticky top-10">
+      {/* <div className="sticky top-10">
         <div className="flex items-center gap-5 mb-5">
           <Image
             className=" rounded-full object-cover"
@@ -137,11 +137,11 @@ const Sidebar: FC = () => {
           ))}
         </ul>
         <button className="flex items-center gap-2.5 p-5 my-[5px] mx-0 cursor-pointer rounded-[10px] bg-none border-none text-white w-full hover:bg-active">
-          {/* <button className="flex p-5 gap-2.5 items-center mx-5px my-0 rounded-[10px] hover:bg-active"> */}
+          <button className="flex p-5 gap-2.5 items-center mx-5px my-0 rounded-[10px] hover:bg-active">
           <MdLogout />
           Logout
         </button>
-      </div>
+      </div> */}
     </>
   )
 }
