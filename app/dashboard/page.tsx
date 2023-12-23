@@ -1,9 +1,10 @@
 import { FC } from 'react'
-import Card from '../ui/dashboard/card/card'
+
 import styles from '../ui/dashboard/dashboard.module.css'
-import RightBar from '../ui/dashboard/rightbar/rightbar'
-import Transactions from '../ui/dashboard/transactions/transactions'
-import Chart from '../ui/dashboard/chart/chart'
+import RightBar from '../ui/dashboard/rightbar/RightBar'
+import Transactions from '../ui/dashboard/transactions/Transactions'
+import Card from '../ui/dashboard/card/Card'
+import Chart from '../ui/dashboard/chart/Chart'
 
 const DashboardPage: FC = () => {
   return (

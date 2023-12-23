@@ -1,6 +1,7 @@
 import Sidebar from '../ui/dashboard/sidebar/Sidebar'
 import Navbar from '../ui/dashboard/navbar/Navbar'
 import styles from '../ui/dashboard/dashboard.module.css'
+import Footer from '../ui/dashboard/footer/Footer'
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -12,6 +13,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <div className={styles.content}>
           <Navbar />
           {children}
+          <Footer />
         </div>
       </div>
       {/*TODO: не могу найти flex: 4; --- заменил на basis-[22.5%]*/}

@@ -2,7 +2,6 @@ import { FC } from 'react'
 import styles from './sidebar.module.css'
 
 import Image from 'next/image'
-import MenuLink from './menuLink/menuLink'
 
 import {
   MdDashboard,
@@ -16,6 +15,7 @@ import {
   MdHelpCenter,
   MdLogout
 } from 'react-icons/md'
+import MenuLink from './menuLink/MenuLink'
 // import { auth, signOut } from "@/app/auth";
 
 const menuItems = [
