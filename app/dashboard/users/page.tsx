@@ -3,6 +3,7 @@ import styles from '@/app/ui/dashboard/users/users.module.css'
 import Search from '@/app/ui/dashboard/search/Search'
 import Link from 'next/link'
 import Image from 'next/image'
+import Pagination from '@/app/ui/dashboard/pagination/Pagination'
 
 const UsersPage: FC = () => {
   return (
@@ -61,6 +62,7 @@ const UsersPage: FC = () => {
             </tr>
           </tbody>
         </table>
+        <Pagination />
       </div>
     </>
   )
