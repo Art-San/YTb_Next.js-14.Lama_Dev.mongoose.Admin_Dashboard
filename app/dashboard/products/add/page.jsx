@@ -1,10 +1,9 @@
 // 1:19:00
-import { FC } from 'react'
 
 // import { addProduct } from "@/app/lib/actions";
 import styles from '@/app/ui/dashboard/products/addProduct/addProduct.module.css'
 
-const AddProductPage: FC = () => {
+const AddProductPage = () => {
   return (
     <>
       <div className={styles.container}>

@@ -1,7 +1,6 @@
 import styles from './footer.module.css'
-import { FC } from 'react'
 
-const Footer: FC = () => {
+const Footer = () => {
   return (
     <>
       <div className={styles.container}>

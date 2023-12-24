@@ -3,10 +3,8 @@
 import Link from 'next/link'
 import styles from './menuLink.module.css'
 import { usePathname } from 'next/navigation'
-import { FC } from 'react'
-import { IMenuItem } from '@/app/types/menu.types'
 
-const MenuLink: FC<{ item: IMenuItem }> = ({ item }) => {
+const MenuLink = ({ item }) => {
   const pathname = usePathname()
 
   return (

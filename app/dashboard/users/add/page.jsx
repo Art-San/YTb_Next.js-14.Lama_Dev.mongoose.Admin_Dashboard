@@ -1,10 +1,8 @@
 // 1:19:00
-import { FC } from 'react'
 
-// import { addProduct } from "@/app/lib/actions";
 import styles from '@/app/ui/dashboard/users/addUser/addUser.module.css'
 
-const AddUserPage: FC = () => {
+const AddUserPage = () => {
   return (
     <>
       <div className={styles.container}>
@@ -19,24 +17,20 @@ const AddUserPage: FC = () => {
           />
           <input type="phone" placeholder="phone" name="phone" />
           <select name="isAdmin" id="isAdmin">
-            <option value={'false'} selected>
-              Is Admin
-            </option>
-            <option value={'true'}>Yes</option>
-            <option value={'false'}>No</option>
+            <option value={false}>Is Admin</option>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
           </select>
           <select name="isActive" id="isActive">
-            <option value={'true'} selected>
-              Is Active
-            </option>
-            <option value={'true'}>Yes</option>
-            <option value={'false'}>No</option>
+            <option value={true}>Is Active</option>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
           </select>
           <textarea
             required
             name="address"
             id="address"
-            rows={16}
+            rows="16"
             placeholder="Address"
           ></textarea>
           <button type="submit">Submit</button>

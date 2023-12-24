@@ -1,9 +1,9 @@
 // 1:29ж42
-import { FC } from 'react'
+
 import styles from '@/app/ui/dashboard/users/singleUser/singleUser.module.css'
 import Image from 'next/image'
 
-const SingleUserPage: FC = () => {
+const SingleUserPage = () => {
   return (
     <>
       <div className={styles.container}>

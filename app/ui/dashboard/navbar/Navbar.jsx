@@ -1,5 +1,5 @@
 'use client'
-import { FC } from 'react'
+
 import styles from './navbar.module.css'
 import { usePathname } from 'next/navigation'
 import {
@@ -9,7 +9,7 @@ import {
   MdSearch
 } from 'react-icons/md'
 
-const Navbar: FC = () => {
+const Navbar = () => {
   const pathname = usePathname()
   return (
     <>

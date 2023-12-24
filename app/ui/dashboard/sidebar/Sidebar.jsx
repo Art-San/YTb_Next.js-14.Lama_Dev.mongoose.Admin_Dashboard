@@ -1,4 +1,3 @@
-import { FC } from 'react'
 import styles from './sidebar.module.css'
 
 import Image from 'next/image'
@@ -81,7 +80,7 @@ const menuItems = [
   }
 ]
 
-const Sidebar: FC = () => {
+const Sidebar = () => {
   return (
     <>
       <div className={styles.container}>

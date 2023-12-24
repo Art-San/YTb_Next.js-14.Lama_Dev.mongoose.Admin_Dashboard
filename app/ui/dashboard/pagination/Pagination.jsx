@@ -54,10 +54,9 @@
 
 // export default Pagination
 
-import { FC } from 'react'
 import styles from './pagination.module.css'
 
-const Pagination: FC = () => {
+const Pagination = () => {
   return (
     <>
       <div className={styles.container}>

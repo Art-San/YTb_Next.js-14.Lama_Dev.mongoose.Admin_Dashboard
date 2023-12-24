@@ -1,12 +1,7 @@
-import { FC } from 'react'
 import styles from './search.module.css'
 import { MdSearch } from 'react-icons/md'
 
-interface ISearchField {
-  placeholder: string
-}
-
-const Search: FC<ISearchField> = ({ placeholder }) => {
+const Search = ({ placeholder }) => {
   return (
     <>
       <div className={styles.container}>

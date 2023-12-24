@@ -2,10 +2,10 @@ import Pagination from '@/app/ui/dashboard/pagination/Pagination'
 import Search from '@/app/ui/dashboard/search/Search'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FC } from 'react'
+
 import styles from '@/app/ui/dashboard/products/products.module.css'
 
-const ProductsPage: FC = () => {
+const ProductsPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -45,7 +45,7 @@ const ProductsPage: FC = () => {
             <td>{'72'}</td>
             <td>
               <div className={styles.buttons}>
-                <Link href={`/dashboard/users/test`}>
+                <Link href={`/dashboard/products/test`}>
                   <button className={`${styles.button} ${styles.view}`}>
                     View
                   </button>
