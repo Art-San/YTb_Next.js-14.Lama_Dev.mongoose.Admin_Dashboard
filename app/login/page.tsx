@@ -7,8 +7,12 @@ import LoginForm from '../ui/login/loginForm/LoginForm'
 const LoginPage: FC = () => {
   return (
     <div className={styles.container}>
-      {'1:40:00'}
-      <LoginForm />
+      <form className={styles.form}>
+        <h1>Login</h1>
+        <input type="text" placeholder="username" name="username" />
+        <input type="password" placeholder="password" name="password" />{' '}
+        <button>Login</button>
+      </form>
     </div>
   )
 }
