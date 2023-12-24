@@ -6,7 +6,8 @@ import Pagination from '@/app/ui/dashboard/pagination/Pagination'
 import { fetchUsers } from '../../lib/data.js'
 
 const UsersPage = async () => {
-  // const users = await fetchUsers()
+  const users = await fetchUsers()
+  console.log('users', users)
   return (
     <>
       <div className={styles.container}>
