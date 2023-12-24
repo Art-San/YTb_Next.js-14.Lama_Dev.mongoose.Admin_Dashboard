@@ -46,7 +46,7 @@ const UsersPage: FC = () => {
               <td>{'Active'}</td>
               <td>
                 <div className={styles.buttons}>
-                  <Link href={`/`}>
+                  <Link href={`/dashboard/users/test`}>
                     <button className={`${styles.button} ${styles.view}`}>
                       View
                     </button>
