@@ -6,13 +6,26 @@ import Search from '@/app/ui/dashboard/search/Search'
 import styles from '@/app/ui/dashboard/users/users.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+
+const chel = [
+  {
+    id: '6589195eacda7ae58638ecb9',
+    username: 'Пирожок',
+    email: 'jonh@mail.com',
+    password: '123456',
+    img: 'https://avatarzo.ru/wp-content/uploads/medved-flag-rossii.jpg',
+    isAdmin: false,
+    isActive: true,
+    createdAt: Number('2023-11-25T09:34:23.419Z')
+  }
+]
 // 2:12ж12
 const UsersPage = async ({ searchParams }) => {
   const q = searchParams?.q || ''
   // const page = searchParams?.page || 1;
   // const { count, users } = await fetchUsers(q, page);
-  const users = await fetchUsers(q)
-  console.log('users', users)
+  const users = (await fetchUsers(q)) || chel
+  // console.log('q', )
   return (
     <div className={styles.container}>
       <div className={styles.top}>
