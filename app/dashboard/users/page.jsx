@@ -6,7 +6,7 @@ import Search from '@/app/ui/dashboard/search/Search'
 import styles from '@/app/ui/dashboard/users/users.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
-
+// 2:12ж12
 const UsersPage = async ({ searchParams }) => {
   const q = searchParams?.q || ''
   // const page = searchParams?.page || 1;
