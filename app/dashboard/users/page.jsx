@@ -1,17 +1,18 @@
 // import { deleteUser } from '@/app/lib/actions'
 import { fetchUsers } from '@/app/lib/data'
 import Pagination from '@/app/ui/dashboard/pagination/pagination'
-import Search from '@/app/ui/dashboard/search/search'
+import Search from '@/app/ui/dashboard/search/Search'
+
 import styles from '@/app/ui/dashboard/users/users.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 
 const UsersPage = async ({ searchParams }) => {
-  // const q = searchParams?.q || "";
+  const q = searchParams?.q || ''
   // const page = searchParams?.page || 1;
   // const { count, users } = await fetchUsers(q, page);
-  const users = await fetchUsers()
-
+  const users = await fetchUsers(q)
+  console.log('users', users)
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -37,7 +38,7 @@ const UsersPage = async ({ searchParams }) => {
               <td>
                 <div className={styles.user}>
                   <Image
-                    src={'/noAvatar.png'}
+                    src={user.img || '/noAvatar.png'}
                     alt=""
                     width={40}
                     height={40}
@@ -47,7 +48,7 @@ const UsersPage = async ({ searchParams }) => {
                 </div>
               </td>
               <td>{user.email}</td>
-              <td>{user.createdAt?.toString().slice(4, 16)}</td>
+              <td>{user.createdAt?.toString().slice(4, 16) || 'undefined'}</td>
               <td>{user.isAdmin ? 'Admin' : 'Client'}</td>
               <td>{user.isActive ? 'active' : 'passive'}</td>
               <td>
