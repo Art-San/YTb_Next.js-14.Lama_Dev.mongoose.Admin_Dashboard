@@ -7,8 +7,12 @@
 .button {
   padding: 5px 10px;
   cursor: pointer;
+  background: #dedee7;
+  color: black;
 }
 
 .button:disabled {
   cursor: not-allowed;
+  background: gray;
+  color: gray;
 }

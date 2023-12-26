@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import styles from '@/app/ui/dashboard/products/products.module.css'
-import Pagination from '@/app/ui/dashboard/pagination/pagination'
+import Pagination from '@/app/ui/dashboard/pagination/Pagination'
 import Search from '@/app/ui/dashboard/search/Search'
 
 const ProductsPage = () => {

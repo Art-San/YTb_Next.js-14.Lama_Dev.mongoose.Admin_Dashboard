@@ -22,9 +22,9 @@ export const fetchUsers = async (q, page) => {
     connectToDB()
     const count = await User.find({ username: { $regex: regex } }).count()
     const users = await User.find({ username: { $regex: regex } })
-    // .limit(ITEM_PER_PAGE)
-    // .skip(ITEM_PER_PAGE * (page - 1))
-    return users
+      .limit(ITEM_PER_PAGE)
+      .skip(ITEM_PER_PAGE * (page - 1))
+    return { users, count }
   } catch (err) {
     console.log(err)
     throw new Error('Failed to fetch users!')

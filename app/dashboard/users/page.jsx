@@ -1,6 +1,6 @@
 // import { deleteUser } from '@/app/lib/actions'
 import { fetchUsers } from '@/app/lib/data'
-import Pagination from '@/app/ui/dashboard/pagination/pagination'
+import Pagination from '@/app/ui/dashboard/pagination/Pagination'
 import Search from '@/app/ui/dashboard/search/Search'
 
 import styles from '@/app/ui/dashboard/users/users.module.css'
@@ -22,9 +22,9 @@ const chel = [
 // 2:12ж12
 const UsersPage = async ({ searchParams }) => {
   const q = searchParams?.q || ''
-  // const page = searchParams?.page || 1;
+  const page = searchParams?.page || 1
   // const { count, users } = await fetchUsers(q, page);
-  const users = (await fetchUsers(q)) || chel
+  const { count, users } = (await fetchUsers(q, page)) || chel
   // console.log('q', )
   return (
     <div className={styles.container}>
@@ -83,7 +83,7 @@ const UsersPage = async ({ searchParams }) => {
           ))}
         </tbody>
       </table>
-      <Pagination />
+      <Pagination count={count} />
     </div>
   )
 }
