@@ -29,7 +29,11 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'https://trashbox.ru'
+        hostname: 'trashbox.ru'
+      },
+      {
+        protocol: 'https',
+        hostname: 'spb-apple.ru'
       }
     ]
   }
@@ -42,3 +46,4 @@ module.exports = nextConfig
 // (https://cdn.freelance.ru
 // (https://trashbox.ru
 // (https://trashbox.ru
+// https://spb-apple.ru/image/cache/catalog/Add/iPhone%2014/14blue-350x450.jpg

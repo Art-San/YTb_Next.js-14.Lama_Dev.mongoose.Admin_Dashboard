@@ -25,7 +25,7 @@ const UsersPage = async ({ searchParams }) => {
   const page = searchParams?.page || 1
   // const { count, users } = await fetchUsers(q, page);
   const { count, users } = (await fetchUsers(q, page)) || chel
-  // console.log('q', )
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>

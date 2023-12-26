@@ -9,6 +9,7 @@
   cursor: pointer;
   background: #dedee7;
   color: black;
+  border-radius: 5px;
 }
 
 .button:disabled {

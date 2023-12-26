@@ -13,7 +13,6 @@ import { connectToDB } from './utils.js'
 //   }
 // }
 export const fetchUsers = async (q, page) => {
-  console.log('qqqqqq', q)
   const regex = new RegExp(q, 'i') // не чувствительно к регистру
 
   const ITEM_PER_PAGE = 2
