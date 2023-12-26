@@ -1,9 +1,15 @@
 // 2:32ж11
 const Page = () => {
+  const handleForm = async (formaData) => {
+    'use server'
+    console.log('formaData', formaData)
+    const username = formaData.get('username')
+    console.log('hello', username)
+  }
   return (
     <div>
-      <form>
-        <input />
+      <form action={handleForm}>
+        <input type="text" name="username" className="text-black" />
         <button>Send</button>
       </form>
     </div>
