@@ -9,10 +9,14 @@
   --textSoft: #b7bac1;
 }
 
-* {
+/* * {
   margin: 0px;
   padding: 0;
   box-sizing: border-box;
+} */
+
+* {
+  @apply p-0 m-0 box-border;
 }
 
 body {

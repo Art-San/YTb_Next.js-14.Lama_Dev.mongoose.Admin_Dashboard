@@ -11,7 +11,7 @@ export default function Home() {
           <li>Второй пункт</li>
           <li>Третий пункт</li>
         </ul>
-        <Link href="/dashboard/users">
+        <Link href="/dashboard">
           <button className="bg-[#008080] py-[5px] px-2.5 text-text border-none cursor-pointer">
             Dashboard
           </button>
