@@ -47,3 +47,4 @@ module.exports = nextConfig
 // (https://trashbox.ru
 // (https://trashbox.ru
 // https://spb-apple.ru/image/cache/catalog/Add/iPhone%2014/14blue-350x450.jpg
+// https://avatarzo.ru

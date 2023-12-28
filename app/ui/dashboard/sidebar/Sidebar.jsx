@@ -82,21 +82,22 @@ const menuItems = [
 ]
 
 const Sidebar = async () => {
-  const session = await auth()
-  console.log('user', session)
+  // const session = await auth()
+  const { user } = await auth()
+  console.log('user', user)
   return (
     <>
       <div className={styles.container}>
         <div className={styles.user}>
           <Image
             className={styles.userImage}
-            src={'/noAvatar.png'}
+            src={user.img || '/noAvatar.png'}
             alt=""
             width={'50'}
             height={'50'}
           />
           <div className="flex flex-col">
-            <span className={styles.userName}>{}</span>
+            <span className={styles.userName}>{user.username}</span>
             <span className={styles.userTitle}>Administrator</span>
           </div>
         </div>
@@ -113,6 +114,7 @@ const Sidebar = async () => {
         {/*3:12:55*/}
         <form
           action={async () => {
+            // действия сервера должны быть асинхронны
             'use server'
             await signOut()
           }}
