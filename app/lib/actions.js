@@ -4,6 +4,7 @@ import { Product, User } from './models'
 import { connectToDB } from './utils.js'
 import { revalidatePath } from 'next/cache'
 import bcrypt from 'bcrypt'
+import { signIn } from '../auth'
 
 export const addUser = async (formData) => {
   // 'use server'
@@ -151,4 +152,15 @@ export const deleteProduct = async (formData) => {
   }
 
   revalidatePath('/dashboard/products')
+}
+
+export const authenticate = async (formData) => {
+  const { username, password } = Object.fromEntries(formData)
+
+  try {
+    await signIn('credentials', { username, password })
+  } catch (err) {
+    console.log('err', err)
+    return 'Wrong Credentials!'
+  }
 }

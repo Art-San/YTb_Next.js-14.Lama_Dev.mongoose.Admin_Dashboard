@@ -15,6 +15,7 @@ import {
   MdLogout
 } from 'react-icons/md'
 import MenuLink from './menuLink/MenuLink'
+import { auth, signOut } from '@/app/auth'
 // import { auth, signOut } from "@/app/auth";
 
 const menuItems = [
@@ -80,20 +81,22 @@ const menuItems = [
   }
 ]
 
-const Sidebar = () => {
+const Sidebar = async () => {
+  const session = await auth()
+  console.log('user', session)
   return (
     <>
       <div className={styles.container}>
         <div className={styles.user}>
           <Image
             className={styles.userImage}
-            src="/noAvatar.png"
+            src={'/noAvatar.png'}
             alt=""
             width={'50'}
             height={'50'}
           />
           <div className="flex flex-col">
-            <span className={styles.userName}>John Doe</span>
+            <span className={styles.userName}>{}</span>
             <span className={styles.userTitle}>Administrator</span>
           </div>
         </div>
@@ -107,6 +110,18 @@ const Sidebar = () => {
             </li>
           ))}
         </ul>
+        {/*3:12:55*/}
+        <form
+          action={async () => {
+            'use server'
+            await signOut()
+          }}
+        >
+          <button className={styles.logout}>
+            <MdLogout />
+            Logout
+          </button>
+        </form>
       </div>
       {/*22:27*/}
       {/* <div className="sticky top-10">
