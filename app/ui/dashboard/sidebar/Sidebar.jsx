@@ -84,7 +84,7 @@ const menuItems = [
 const Sidebar = async () => {
   // const session = await auth()
   const { user } = await auth()
-  console.log('user', user)
+
   return (
     <>
       <div className={styles.container}>
@@ -116,7 +116,9 @@ const Sidebar = async () => {
           action={async () => {
             // действия сервера должны быть асинхронны
             'use server'
-            await signOut()
+            await signOut({
+              redirect: '/'
+            })
           }}
         >
           <button className={styles.logout}>

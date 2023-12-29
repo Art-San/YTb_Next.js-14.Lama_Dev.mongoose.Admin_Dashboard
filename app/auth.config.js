@@ -1,40 +1,42 @@
-// export const authConfig = {
-//   providers: [],
-//   pages: {
-//     signIn: '/login'
-//   },
-//   callbacks: {
-//     authorized({ auth, request }) {
-//       const isLoggedIn = auth?.user
-//       // console.log('auth', auth)
-//       const isOnDashboard = request.nextUrl.pathname.startsWith('/dashboard')
-//       if (isOnDashboard) {
-//         if (isLoggedIn) return true
-//         return false
-//       } else if (isLoggedIn) {
-//         return Response.redirect(new URL('/dashboard', request.nextUrl))
-//       }
-//       return true
-//     }
-//   }
-// }
-
 export const authConfig = {
+  providers: [],
   pages: {
     signIn: '/login'
   },
   callbacks: {
-    authorized({ auth, request: { nextUrl } }) {
-      const isLoggedIn = !!auth?.user
-      const isOnDashboard = nextUrl.pathname.startsWith('/dashboard')
+    authorized({ auth, request }) {
+      const isLoggedIn = auth?.user
+      const isOnDashboard = request.nextUrl.pathname.startsWith('/dashboard')
       if (isOnDashboard) {
         if (isLoggedIn) return true
-        return false // Redirect unauthenticated users to login page
+        return false
       } else if (isLoggedIn) {
-        return Response.redirect(new URL('/dashboard', nextUrl))
+        return Response.redirect(new URL('/dashboard', request.nextUrl))
       }
       return true
     }
-  },
-  providers: [] // Add providers with an empty array for now
+  }
 }
+
+// из документации
+// export const authConfig = {
+//   pages: {
+//     signIn: '/login'
+//   },
+//   callbacks: {
+//     authorized({ auth, request: { nextUrl } }) {
+//       const isLoggedIn = !!auth?.user
+
+//       const isOnDashboard = nextUrl.pathname.startsWith('/dashboard')
+
+//       if (isOnDashboard) {
+//         if (isLoggedIn) return true
+//         return false // Перенаправлять не аутентифицированных пользователей на страницу входа
+//       } else if (isLoggedIn) {
+//         return Response.redirect(new URL('/dashboard', nextUrl))
+//       }
+//       return true
+//     }
+//   },
+//   providers: [] // Add providers with an empty array for now
+// }

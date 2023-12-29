@@ -154,13 +154,38 @@ export const deleteProduct = async (formData) => {
   revalidatePath('/dashboard/products')
 }
 
-export const authenticate = async (prevState, formData) => {
-  const { username, password } = Object.fromEntries(formData)
+// export const authenticate = async (prevState, formData) => {
+//   const { username, password } = Object.fromEntries(formData)
 
+//   try {
+//     await signIn('credentials', { username, password })
+//   } catch (err) {
+//     console.log('ЭКШЕН authenticate', err)
+//     return 'Wrong Credentials!'
+//   }
+// }
+// из документации
+export async function authenticate(prevState, formData) {
+  const { username, password } = Object.fromEntries(formData)
   try {
     await signIn('credentials', { username, password })
-  } catch (err) {
-    console.log('er', err)
-    return 'Wrong Credentials!'
+  } catch (error) {
+    if (error) {
+      switch (error.type) {
+        case 'CredentialsSignin':
+          console.log(
+            'ЭКШЕН authenticate: Неверные учетные данные. error.type',
+            error.type
+          )
+          return 'Неверные учетные данные.'
+        default:
+          console.log(
+            'ЭКШЕН authenticate: Что-то пошло не так. error.type',
+            error.type
+          )
+          return 'Что-то пошло не так.'
+      }
+    }
+    throw error
   }
 }
