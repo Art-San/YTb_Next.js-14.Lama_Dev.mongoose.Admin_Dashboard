@@ -8,7 +8,8 @@ import { signIn } from '../auth'
 
 export const addUser = async (formData) => {
   // 'use server'
-  const { username, email, password, phone, address, isAdmin, isActive } =
+
+  const { username, email, password, img, phone, address, isAdmin, isActive } =
     Object.fromEntries(formData)
 
   try {
@@ -21,12 +22,13 @@ export const addUser = async (formData) => {
       username,
       email,
       password: hashedPassword,
+      img,
       phone,
       address,
       isAdmin,
       isActive
     })
-
+    console.log(newUser)
     await newUser.save()
   } catch (err) {
     console.log(err)
@@ -38,16 +40,29 @@ export const addUser = async (formData) => {
 }
 
 export const updateUser = async (formData) => {
-  const { id, username, email, password, phone, address, isAdmin, isActive } =
-    Object.fromEntries(formData)
+  const {
+    id,
+    username,
+    email,
+    password,
+    img,
+    phone,
+    address,
+    isAdmin,
+    isActive
+  } = Object.fromEntries(formData)
 
   try {
     connectToDB()
 
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(password, salt)
+
     const updateFields = {
       username,
       email,
-      password,
+      password: hashedPassword,
+      img,
       phone,
       address,
       isAdmin,
@@ -84,20 +99,23 @@ export const deleteUser = async (formData) => {
 }
 
 export const addProduct = async (formData) => {
-  const { title, desc, price, stock, color, size } =
+  const { title, desc, img, price, stock, color, size } =
     Object.fromEntries(formData)
-
+  console.log('formData', formData)
   try {
     connectToDB()
 
     const newProduct = new Product({
       title,
       desc,
+      img,
       price,
       stock,
       color,
       size
     })
+
+    console.log('newProduct', newProduct)
 
     await newProduct.save()
   } catch (err) {
@@ -110,7 +128,7 @@ export const addProduct = async (formData) => {
 }
 
 export const updateProduct = async (formData) => {
-  const { id, title, desc, price, stock, color, size } =
+  const { id, title, desc, img, price, stock, color, size } =
     Object.fromEntries(formData)
 
   try {
@@ -119,6 +137,7 @@ export const updateProduct = async (formData) => {
     const updateFields = {
       title,
       desc,
+      img,
       price,
       stock,
       color,
@@ -161,7 +180,7 @@ export const deleteProduct = async (formData) => {
 //     await signIn('credentials', { username, password })
 //   } catch (err) {
 //     console.log('ЭКШЕН authenticate', err)
-//     return 'Wrong Credentials!'
+//     return 'Wrong Credentials+!'
 //   }
 // }
 // из документации
@@ -181,11 +200,11 @@ export async function authenticate(prevState, formData) {
         default:
           console.log(
             'ЭКШЕН authenticate: Что-то пошло не так. error.type',
-            error.type
+            error
           )
-          return 'Что-то пошло не так.'
+          return 'Что-то пошло не так первый вар.'
       }
     }
-    throw error
+    throw 'Что-то пошло не так-второй вар.'
   }
 }

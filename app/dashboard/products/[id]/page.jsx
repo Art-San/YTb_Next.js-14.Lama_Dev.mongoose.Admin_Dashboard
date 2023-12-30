@@ -11,7 +11,7 @@ const SingleProductPage = async ({ params }) => {
     <div className={styles.container}>
       <div className={styles.infoContainer}>
         <div className={styles.imgContainer}>
-          <Image src="/noProduct.jpg" alt="" fill />
+          <Image src={product.img || '/noProduct.jpg'} alt="" fill />
         </div>
         {product.title}
       </div>
@@ -20,6 +20,8 @@ const SingleProductPage = async ({ params }) => {
           <input type="hidden" name="id" value={product.id} />
           <label>Title</label>
           <input type="text" name="title" placeholder={product.title} />
+          <label>Image</label>
+          <input type="img" name="img" placeholder="ссылка на изображение" />
           <label>Price</label>
           <input type="number" name="price" placeholder={product.price} />
           <label>Stock</label>

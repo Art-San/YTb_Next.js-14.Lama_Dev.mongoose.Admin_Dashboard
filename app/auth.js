@@ -11,8 +11,8 @@ const login = async (credentials) => {
     connectToDB()
     const user = await User.findOne({ username: credentials.username })
 
-    if (!user) throw new Error('Wrong credentials!')
-    // if (!user || !user.isAdmin) throw new Error('Wrong credentials!')
+    // if (!user) throw new Error('Wrong credentials!')
+    if (!user || !user.isAdmin) throw new Error('не user или не admin!')
 
     const isPasswordCorrect = await bcrypt.compare(
       credentials.password,
@@ -23,7 +23,6 @@ const login = async (credentials) => {
 
     return user
   } catch (err) {
-    console.log(err)
     throw new Error('Failed to login!')
   }
 }
@@ -40,7 +39,7 @@ export const { signIn, signOut, auth } = NextAuth({
           return user
         } catch (err) {
           console.log('auth.js err', err)
-          return null
+          return err
         }
       }
     })

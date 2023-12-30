@@ -16,6 +16,7 @@ const AddUserPage = () => {
             name="password"
             required
           />
+          <input type="text" placeholder="ссылка на изображение" name="img" />
           <input type="phone" placeholder="phone" name="phone" />
           <select name="isAdmin" id="isAdmin">
             <option value={false}>Is Admin</option>
