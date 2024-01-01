@@ -1,10 +1,10 @@
 import NextAuth from 'next-auth'
-// import CredentialsProvider from 'next-auth/providers/credentials'
+import CredentialsProvider from 'next-auth/providers/credentials'
 import { authConfig } from './auth.config'
 import { connectToDB } from './lib/utils'
 import { User } from './lib/models'
 import bcrypt from 'bcrypt'
-import Credentials from 'next-auth/providers/credentials'
+// import Credentials from 'next-auth/providers/credentials'
 
 const login = async (credentials) => {
   try {
@@ -30,8 +30,8 @@ const login = async (credentials) => {
 export const { signIn, signOut, auth } = NextAuth({
   ...authConfig,
   providers: [
-    Credentials({
-      // CredentialsProvider({
+    // Credentials({
+    CredentialsProvider({
       async authorize(credentials) {
         try {
           const user = await login(credentials)
