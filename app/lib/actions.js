@@ -54,14 +54,14 @@ export const updateUser = async (formData) => {
 
   try {
     connectToDB()
-
-    const salt = await bcrypt.genSalt(10)
-    const hashedPassword = await bcrypt.hash(password, salt)
+    console.log('password', password === '' || undefined)
+    // const salt = await bcrypt.genSalt(10)
+    // const hashedPassword = await bcrypt.hash(password, salt)
 
     const updateFields = {
       username,
       email,
-      password: hashedPassword,
+      password,
       img,
       phone,
       address,
@@ -74,10 +74,11 @@ export const updateUser = async (formData) => {
         (updateFields[key] === '' || undefined) && delete updateFields[key] // удаляем ключ объекта если он пустой, и в базу улетают только те данные которые были введены в форму
     )
 
-    await User.findByIdAndUpdate(id, updateFields)
+    // await User.findByIdAndUpdate(id, updateFields)
+    console.log('saved to db')
   } catch (err) {
-    console.log(err)
-    throw new Error('Failed to update user!')
+    console.log('actions updateUser', err)
+    throw new Error('Не удалось обновить пользователя!')
   }
 
   revalidatePath('/dashboard/users')
