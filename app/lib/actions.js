@@ -4,7 +4,7 @@ import { Product, User } from './models'
 import { connectToDB } from './utils.js'
 import { revalidatePath } from 'next/cache'
 import bcrypt from 'bcrypt'
-import { signIn } from '../auth'
+import { signIn } from './auth'
 
 export const addUser = async (formData) => {
   // 'use server'

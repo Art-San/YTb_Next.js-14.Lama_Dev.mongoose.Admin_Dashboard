@@ -15,7 +15,7 @@ import {
   MdLogout
 } from 'react-icons/md'
 import MenuLink from './menuLink/MenuLink'
-import { auth, signOut } from '@/app/auth'
+import { auth, signOut } from '@/app/lib/auth'
 // import { auth, signOut } from "@/app/auth";
 
 const menuItems = [
