@@ -82,8 +82,10 @@ const menuItems = [
 ]
 
 const Sidebar = async () => {
-  // const session = await auth()
+  const session = await auth()
+
   const { user } = await auth()
+  console.log('debar session', session)
 
   return (
     <>
