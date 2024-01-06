@@ -52,16 +52,24 @@ export const updateUser = async (formData) => {
     isActive
   } = Object.fromEntries(formData)
 
+  const noSpaces = password.trim()
+  console.log('noSpaces', noSpaces)
+  const hashedPassword = async (noSpaces) => {
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(noSpaces, salt)
+    return hashedPassword
+  }
+
   try {
     connectToDB()
-    console.log('password', password === '' || undefined)
-    // const salt = await bcrypt.genSalt(10)
-    // const hashedPassword = await bcrypt.hash(password, salt)
+
+    const oneOf =
+      noSpaces === '' || undefined ? noSpaces : await hashedPassword(noSpaces)
 
     const updateFields = {
       username,
       email,
-      password,
+      password: oneOf,
       img,
       phone,
       address,
@@ -74,7 +82,7 @@ export const updateUser = async (formData) => {
         (updateFields[key] === '' || undefined) && delete updateFields[key] // удаляем ключ объекта если он пустой, и в базу улетают только те данные которые были введены в форму
     )
 
-    // await User.findByIdAndUpdate(id, updateFields)
+    await User.findByIdAndUpdate(id, updateFields)
     console.log('saved to db')
   } catch (err) {
     console.log('actions updateUser', err)
