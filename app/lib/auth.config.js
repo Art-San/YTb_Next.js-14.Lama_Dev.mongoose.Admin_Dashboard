@@ -4,15 +4,37 @@ export const authConfig = {
     signIn: '/login'
   },
   callbacks: {
+    // ADD ADDITIONAL INFORMATION TO SESSION
+    async jwt({ token, user }) {
+      // console.log('auth.config  jwt user', user)
+      // console.log('auth.config  jwt token', token)
+      if (user) {
+        token.id = user.id
+        token.isAdmin = user.isAdmin
+        token.username = user.username
+        token.img = user.img
+      }
+      return token
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user.id = token.id
+        session.user.isAdmin = token.isAdmin
+        session.user.username = token.username
+        session.user.img = token.img
+      }
+      return session
+    },
     authorized({ auth, request }) {
-      const isLoggedIn = auth?.user
-
+      const user = auth?.user
       const isOnDashboard = request.nextUrl.pathname.startsWith('/dashboard')
-
+      console.log('request.nextUrl.pathname', request.nextUrl.pathname)
+      console.log('authConfig isOnDashboard', isOnDashboard)
+      console.log('authConfig user ', user)
       if (isOnDashboard) {
-        if (isLoggedIn) return true
+        if (user) return true
         return false
-      } else if (isLoggedIn) {
+      } else if (user) {
         return Response.redirect(new URL('/dashboard', request.nextUrl))
       }
       return true

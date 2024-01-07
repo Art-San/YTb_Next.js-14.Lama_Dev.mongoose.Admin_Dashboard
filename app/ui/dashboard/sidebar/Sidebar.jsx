@@ -85,7 +85,7 @@ const Sidebar = async () => {
   const session = await auth()
 
   const { user } = await auth()
-  console.log('debar session', session)
+  console.log('Sidebar  session', session)
 
   return (
     <>

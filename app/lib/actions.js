@@ -182,6 +182,21 @@ export const deleteProduct = async (formData) => {
   revalidatePath('/dashboard/products')
 }
 
+export const authenticate = async (prevState, formData) => {
+  const { username, password } = Object.fromEntries(formData)
+  console.log('actions authenticate ', username, password)
+  try {
+    await signIn('credentials', { username, password })
+    console.log('actions authenticate ВОШЕЛ')
+  } catch (err) {
+    console.log('actions authenticate не не ВОШЕЛ')
+    if (err.message.includes('CredentialsSignin')) {
+      return 'Wrong Credentials'
+    }
+    throw err
+  }
+}
+
 // export const authenticate = async (prevState, formData) => {
 //   const { username, password } = Object.fromEntries(formData)
 
@@ -193,27 +208,24 @@ export const deleteProduct = async (formData) => {
 //   }
 // }
 // из документации
-export async function authenticate(prevState, formData) {
-  const { username, password } = Object.fromEntries(formData)
-  try {
-    await signIn('credentials', { username, password })
-  } catch (error) {
-    if (error) {
-      switch (error.type) {
-        case 'CredentialsSignin':
-          console.log(
-            'ЭКШЕН authenticate: Неверные учетные данные. error.type',
-            error.type
-          )
-          return 'Неверные учетные данные.'
-        default:
-          console.log(
-            'ЭКШЕН authenticate: Что-то пошло не так. error.type',
-            error
-          )
-          return 'Что-то пошло не так первый вар.'
-      }
-    }
-    throw 'Что-то пошло не так-второй вар.'
-  }
-}
+// export async function authenticate(prevState, formData) {
+//   const { username, password } = Object.fromEntries(formData)
+//   try {
+//     await signIn('credentials', { username, password })
+//   } catch (error) {
+//     if (error) {
+//       switch (error.type) {
+//         case 'CredentialsSignin':
+//           console.log(
+//             'ЭКШЕН authenticate: Неверные учетные данные. error.type',
+//             error.type
+//           )
+//           return 'Неверные учетные данные.'
+//         default:
+//           console.log('ЭКШЕН authenticate: Что-то пошло не так. default', error)
+//           return 'Что-то пошло не так первый вар.'
+//       }
+//     }
+//     throw 'Что-то пошло не так-второй вар.'
+//   }
+// }

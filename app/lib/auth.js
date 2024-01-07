@@ -23,11 +23,17 @@ const login = async (credentials) => {
 
     return user
   } catch (err) {
+    console.log('auth login -- Failed to login!')
     throw new Error('Failed to login!')
   }
 }
 
-export const { signIn, signOut, auth } = NextAuth({
+export const {
+  handlers: { GET, POST },
+  signIn,
+  signOut,
+  auth
+} = NextAuth({
   ...authConfig,
   providers: [
     // Credentials({
@@ -38,29 +44,13 @@ export const { signIn, signOut, auth } = NextAuth({
           // console.log('auth NextAuth ser', user) // есть user
           return user
         } catch (err) {
-          console.log('auth.js err', err)
-          return err
+          console.log('auth CredentialsProvider err', err)
+          return null
+          // return err
         }
       }
     })
-  ],
-  // ADD ADDITIONAL INFORMATION TO SESSION
-  callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.username = user.username
-        token.img = user.img
-      }
-      return token
-    },
-    async session({ session, token }) {
-      if (token) {
-        session.user.username = token.username
-        session.user.img = token.img
-      }
-      return session
-    }
-  }
+  ]
 })
 
 // https://authjs.dev/getting-started/providers/credentials-tutorial#:~:text=pages/api/auth/%5B...nextauth%5D.ts
