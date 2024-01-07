@@ -194,7 +194,7 @@ export const authenticate = async (prevState, formData) => {
     if (err.message.includes('CredentialsSignin')) {
       return '13 Wrong Credentials'
     }
-    throw err // приходит ошибка err.message: NEXT_REDIRECT, и благодаря ей все работает
+    throw err // приходит ошибка err.message: NEXT_REDIRECT, и благодаря ей все работает g
   }
 }
 
