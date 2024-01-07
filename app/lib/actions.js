@@ -186,7 +186,7 @@ export const authenticate = async (prevState, formData) => {
   const { username, password } = Object.fromEntries(formData)
 
   try {
-    // непонятки в signIn происходят срабатывать catch
+    // непонятки в signIn происходят срабатывать catch f
     await signIn('credentials', { username, password })
     console.log('actions authenticate вошел ВОШЕЛ')
   } catch (err) {
