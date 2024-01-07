@@ -11,8 +11,8 @@ const login = async (credentials) => {
     connectToDB()
     const user = await User.findOne({ username: credentials.username })
 
-    if (!user) throw new Error('Wrong credentials!')
-    // if (!user || !user.isAdmin) throw new Error('не user или не admin!')
+    // if (!user) throw new Error('Wrong credentials!')
+    if (!user || !user.isAdmin) throw new Error('не user или не admin!')
 
     const isPasswordCorrect = await bcrypt.compare(
       credentials.password,
@@ -34,11 +34,11 @@ export const { signIn, signOut, auth } = NextAuth({
       async authorize(credentials) {
         try {
           const user = await login(credentials)
-          console.log('auth NextAuth ser {1}', user) // есть user
+          console.log('auth authorize user', user)
           return user
         } catch (err) {
-          console.log('auth.js err', err)
-          return err
+          console.log('auth CredentialsProvider err', err)
+          return null
         }
       }
     })

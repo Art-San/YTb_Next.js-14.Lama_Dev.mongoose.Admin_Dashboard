@@ -182,45 +182,43 @@ export const deleteProduct = async (formData) => {
   revalidatePath('/dashboard/products')
 }
 
-// export const authenticate = async (prevState, formData) => {
-//   const { username, password } = Object.fromEntries(formData)
-
-//   try {
-//     // непонятки в signIn происходят срабатывать catch f
-//     await signIn('credentials', { username, password })
-//     console.log('actions authenticate вошел ВОШЕЛ')
-//   } catch (err) {
-//     console.log('actions authenticate не не ВОШЕЛ ', err.message)
-//     if (err.message.includes('CredentialsSignin')) {
-//       return '13 Wrong Credentials'
-//     }
-//     throw err // приходит ошибка err.message: NEXT_REDIRECT, и благодаря ей все работает g
-//   }
-// }
-// из документации
-export async function authenticate(prevState, formData) {
+export const authenticate = async (prevState, formData) => {
   const { username, password } = Object.fromEntries(formData)
+  console.log('actions authenticate ', username, password)
   try {
     await signIn('credentials', { username, password })
-  } catch (error) {
-    if (error) {
-      switch (error.type) {
-        case 'CredentialsSignin':
-          console.log(
-            'ЭКШЕН authenticate: Неверные учетные данные. 10',
-            error.type
-          )
-          return 'Неверные учетные данные.'
-        default:
-          console.log(
-            'ЭКШЕН authenticate: Что-то пошло не так. {?-4}',
-            error.message
-          )
-          return 'Что-то пошло не так первый вар.'
-        // throw error.message
-      }
+    console.log('actions authenticate ВОШЕЛ')
+  } catch (err) {
+    console.log('actions authenticate не не ВОШЕЛ')
+    if (err.message.includes('CredentialsSignin')) {
+      return 'Wrong Credentials'
     }
-    // throw error
-    throw 'Что-то пошло не так-второй вар.'
+    throw err
   }
 }
+// из документации
+// export async function authenticate(prevState, formData) {
+//   const { username, password } = Object.fromEntries(formData)
+//   try {
+//     await signIn('credentials', { username, password })
+//   } catch (error) {
+//     if (error) {
+//       switch (error.type) {
+//         case 'CredentialsSignin':
+//           console.log(
+//             'ЭКШЕН authenticate: Неверные учетные данные. 10',
+//             error.type
+//           )
+//           return 'Неверные учетные данные.'
+//         default:
+//           console.log(
+//             'ЭКШЕН authenticate: Что-то пошло не так. {?-4}',
+//             error.message
+//           )
+
+//           throw error
+//       }
+//     }
+//     throw error
+//   }
+// }
