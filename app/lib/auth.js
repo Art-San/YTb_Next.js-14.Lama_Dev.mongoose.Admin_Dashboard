@@ -24,12 +24,12 @@ const login = async (credentials) => {
     return user
   } catch (err) {
     console.log('auth login -- Failed to login!')
-    throw new Error('Failed to login!')
+    throw new Error('13 Не удалось войти!')
   }
 }
 
 export const {
-  handlers: { GET, POST },
+  // handlers: { GET, POST }, // это для гит
   signIn,
   signOut,
   auth
@@ -46,11 +46,28 @@ export const {
         } catch (err) {
           console.log('auth CredentialsProvider err', err)
           return null
-          // return err
         }
       }
     })
-  ]
+  ],
+  callbacks: {
+    async jwt({ token, user }) {
+      console.log('auth  jwt user', user)
+      console.log('auth  jwt user', token)
+      if (user) {
+        token.username = user.username
+        token.img = user.img
+      }
+      return token
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user.username = token.username
+        session.user.img = token.img
+      }
+      return session
+    }
+  }
 })
 
 // https://authjs.dev/getting-started/providers/credentials-tutorial#:~:text=pages/api/auth/%5B...nextauth%5D.ts

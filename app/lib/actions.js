@@ -184,16 +184,17 @@ export const deleteProduct = async (formData) => {
 
 export const authenticate = async (prevState, formData) => {
   const { username, password } = Object.fromEntries(formData)
-  console.log('actions authenticate ', username, password)
+
   try {
+    // непонятки в signIn происходят срабатывать catch
     await signIn('credentials', { username, password })
-    console.log('actions authenticate ВОШЕЛ')
+    console.log('actions authenticate вошел ВОШЕЛ')
   } catch (err) {
-    console.log('actions authenticate не не ВОШЕЛ')
+    console.log('actions authenticate не не ВОШЕЛ', err.message)
     if (err.message.includes('CredentialsSignin')) {
-      return 'Wrong Credentials'
+      return '13 Wrong Credentials'
     }
-    throw err
+    throw err // приходит ошибка err.message: NEXT_REDIRECT, и благодаря ей все работает
   }
 }
 
