@@ -19,7 +19,7 @@ export const authConfig = {
   }
 }
 
-// из документации
+// из документации https://nextjs.org/learn/dashboard-app/adding-authentication#:~:text=Protecting%20your%20routes%20with%20Next.js%20Middleware
 // export const authConfig = {
 //   pages: {
 //     signIn: '/login'
