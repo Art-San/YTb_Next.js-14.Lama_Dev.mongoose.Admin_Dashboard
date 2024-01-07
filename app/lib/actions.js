@@ -202,18 +202,17 @@ export async function authenticate(prevState, formData) {
       switch (error.type) {
         case 'CredentialsSignin':
           console.log(
-            'ЭКШЕН authenticate: Неверные учетные данные. error.type',
+            'ЭКШЕН authenticate: Неверные учетные данные. 10',
             error.type
           )
           return 'Неверные учетные данные.'
         default:
-          console.log(
-            'ЭКШЕН authenticate: Что-то пошло не так. error.type',
-            error
-          )
-          return 'Что-то пошло не так первый вар.'
+          console.log('ЭКШЕН authenticate: Что-то пошло не так. {?-4}', error)
+          // return 'Что-то пошло не так первый вар.'
+          throw error
       }
     }
-    throw 'Что-то пошло не так-второй вар.'
+    throw error
+    // throw 'Что-то пошло не так-второй вар.'
   }
 }

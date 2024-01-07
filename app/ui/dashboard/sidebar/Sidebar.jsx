@@ -82,8 +82,9 @@ const menuItems = [
 ]
 
 const Sidebar = async () => {
-  // const session = await auth()
+  const session = await auth()
   const { user } = await auth()
+  console.log('Sidebar session', session)
 
   return (
     <>
@@ -91,13 +92,13 @@ const Sidebar = async () => {
         <div className={styles.user}>
           <Image
             className={styles.userImage}
-            src={user.img || '/noAvatar.png'}
+            src={user.image || '/noAvatar.png'}
             alt=""
             width={'50'}
             height={'50'}
           />
           <div className="flex flex-col">
-            <span className={styles.userName}>{user.username}</span>
+            <span className={styles.userName}>{user.name}</span>
             <span className={styles.userTitle}>Administrator</span>
           </div>
         </div>

@@ -35,7 +35,7 @@ export const { signIn, signOut, auth } = NextAuth({
       async authorize(credentials) {
         try {
           const user = await login(credentials)
-          // console.log('auth NextAuth ser', user) // есть user
+          console.log('auth NextAuth ser {1}', user) // есть user
           return user
         } catch (err) {
           console.log('auth.js err', err)
@@ -47,17 +47,26 @@ export const { signIn, signOut, auth } = NextAuth({
   // ADD ADDITIONAL INFORMATION TO SESSION
   callbacks: {
     async jwt({ token, user }) {
+      console.log('auth jwt user {2} :', user)
       if (user) {
-        token.username = user.username
-        token.img = user.img
+        token.name = user.username
+        token.picture = user.img
       }
+      console.log('auth jwt token {3} :', token)
       return token
     },
     async session({ session, token }) {
+      console.log('auth jwt token {4} :', token)
+      console.log('auth jwt session {5} :', session)
       if (token) {
-        session.user.username = token.username
-        session.user.img = token.img
+        session.user.name = token.name
+        session.user.image = token.picture
       }
+      // if (token) { // какая-то неразбериха с полями
+      //   session.user.username = token.name
+      //   session.user.img = token.picture
+      // }
+      console.log('auth jwt session {6} :', session)
       return session
     }
   }
