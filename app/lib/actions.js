@@ -193,11 +193,11 @@ export const authenticate = async (prevState, formData) => {
   try {
     // непонятки в signIn происходят срабатывать catch
     await signIn('credentials', { username, password })
-    console.log('actions authenticate вошел ВОШЕЛ {?-3}')
+    console.log('actions authenticate вошел ВОШЕЛ {?-??}')
   } catch (err) {
-    console.log('actions authenticate не не ВОШЕЛ {?-4}', err.message)
+    console.log('actions authenticate не не ВОШЕЛ {-3}', err.message)
     if (err.message.includes('CredentialsSignin')) {
-      return '13 Wrong Credentials'
+      return 'Неверный пароль или юзер'
     }
     throw err // приходит ошибка err.message: NEXT_REDIRECT, и благодаря ей все работает g
   }

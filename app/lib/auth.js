@@ -12,21 +12,19 @@ const login = async (credentials) => {
     connectToDB()
     const user = await User.findOne({ username: credentials.username })
 
-    if (!user || !user.isAdmin)
-      throw new Error('Wrong credentials - не юзер или админ!')
+    if (!user || !user.isAdmin) throw new Error('не юзер или админ!')
 
     const isPasswordCorrect = await bcrypt.compare(
       credentials.password,
       user.password
     )
 
-    if (!isPasswordCorrect)
-      throw new Error('Wrong credentials - пароль не верный!')
+    if (!isPasswordCorrect) throw new Error('пароль не верный!')
 
     return user
   } catch (err) {
-    console.log(err)
-    throw new Error('Failed to login!')
+    console.log('auth login err.message {-1}', err.message) // 'не юзер или админ!' ИЛИ 'пароль не верный!'
+    throw new Error(err.message)
   }
 }
 
@@ -45,10 +43,11 @@ export const { signIn, signOut, auth } = NextAuth({
           console.log('auth NextAuth ser {1}', user) // есть user
           return user
         } catch (err) {
-          console.log('auth.js err {-1}', typeof err)
+          console.log('auth authorize err.message {-2}', err.message) // object {} или / 'не юзер или админ!' ИЛИ 'пароль не верный!'
           {
             /*FIXME: Важный момент return null*/
           }
+
           return null
           // return err // <<<< должен быть NULL как в примерах ниже
         }
