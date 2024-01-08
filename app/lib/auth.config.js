@@ -4,6 +4,29 @@ export const authConfig = {
     signIn: '/login'
   },
   callbacks: {
+    async jwt({ token, user }) {
+      console.log('auth jwt user {2} :', user)
+      if (user) {
+        token.name = user.username
+        token.picture = user.img
+      }
+      console.log('auth jwt token {3} :', token)
+      return token
+    },
+    async session({ session, token }) {
+      console.log('auth jwt token {4} :', token)
+      console.log('auth jwt session {5} :', session)
+      if (token) {
+        session.user.name = token.name // Поля переписаны, не так как у меня в модели
+        session.user.image = token.picture
+      }
+      // if (token) { // какая-то неразбериха с полями
+      //   session.user.username = token.name
+      //   session.user.img = token.picture
+      // }
+      console.log('auth jwt session {6} :', session)
+      return session
+    },
     authorized({ auth, request }) {
       console.log('authConfig auth?.user {?1?1}', auth?.user)
       const isLoggedIn = auth?.user

@@ -118,7 +118,7 @@ const Sidebar = async () => {
             // действия сервера должны быть асинхронны
             'use server'
             await signOut({
-              redirect: '/'
+              redirectTo: '/'
             })
           }}
         >

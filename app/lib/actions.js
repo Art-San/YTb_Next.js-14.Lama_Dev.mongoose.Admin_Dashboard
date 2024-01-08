@@ -182,13 +182,18 @@ export const deleteProduct = async (formData) => {
   revalidatePath('/dashboard/products')
 }
 
+// export const handleLogOut = async () => {
+//   'use server'
+//   await signOut({ redirectTo: '/' })
+// }
+
 export const authenticate = async (prevState, formData) => {
   const { username, password } = Object.fromEntries(formData)
 
   try {
     // непонятки в signIn происходят срабатывать catch
     await signIn('credentials', { username, password })
-    console.log('actions authenticate вошел ВОШЕЛ')
+    console.log('actions authenticate вошел ВОШЕЛ {?-3}')
   } catch (err) {
     console.log('actions authenticate не не ВОШЕЛ {?-4}', err.message)
     if (err.message.includes('CredentialsSignin')) {
