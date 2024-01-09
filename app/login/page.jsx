@@ -1,3 +1,17 @@
+// import styles from '@/app/ui/login/login.module.css'
+import LoginForm from '../ui/login/loginForm/LoginForm'
+
+const LoginPage = () => {
+  return (
+    <div className=" w-full h-[100dvh] flex items-center justify-center">
+      {/* <div className={styles.container}> */}
+      <LoginForm />
+    </div>
+  )
+}
+
+export default LoginPage
+
 // {'1:40:00'}
 
 // import styles from '@/app/ui/login/login.module.css'
@@ -42,16 +56,3 @@
 // }
 
 // export default LoginPage
-
-import styles from '@/app/ui/login/login.module.css'
-import LoginForm from '../ui/login/loginForm/LoginForm'
-
-const LoginPage = () => {
-  return (
-    <div className={styles.container}>
-      <LoginForm />
-    </div>
-  )
-}
-
-export default LoginPage

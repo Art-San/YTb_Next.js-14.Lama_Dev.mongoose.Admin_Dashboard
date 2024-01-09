@@ -4,7 +4,7 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <>
-      <div className=" flex flex-col gap-4">
+      <div className=" flex flex-col gap-4 m-5">
         <h1>Home Page</h1>
         <ul>
           <li>Первый пункт</li>

@@ -1,17 +1,19 @@
 'use client'
 import { authenticate } from '@/app/lib/actions'
 import styles from './loginForm.module.css'
-import { useFormState } from 'react-dom'
+import { useFormState, useFormStatus } from 'react-dom'
 
 const LoginForm = () => {
+  const { pending } = useFormStatus()
   const [state, formAction] = useFormState(authenticate, undefined)
-
+  console.log('pending', pending)
+  console.log('state', state)
   return (
     <form action={formAction} className={styles.form}>
       <h1>Login</h1>
       <input type="text" placeholder="username" name="username" />
       <input type="password" placeholder="password" name="password" />
-      <button>Login</button>
+      <button aria-disabled={pending}>Login</button>
       {state && state}
     </form>
   )
@@ -19,7 +21,7 @@ const LoginForm = () => {
 
 export default LoginForm
 
-// ошибку выводим с поиощю useState
+// ПЕРВЫЙ вар. ошибку выводим с помощью useState
 // 'use client'
 // import { authenticate } from '@/app/lib/actions'
 // import styles from './loginForm.module.css'
