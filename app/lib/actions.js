@@ -184,7 +184,7 @@ export const deleteProduct = async (formData) => {
 
 export const authenticate = async (prevState, formData) => {
   const { username, password } = Object.fromEntries(formData)
-  console.log('actions authenticate ', username, password)
+
   try {
     await signIn('credentials', { username, password })
     console.log('actions authenticate ВОШЕЛ')
@@ -194,6 +194,43 @@ export const authenticate = async (prevState, formData) => {
       return 'Wrong Credentials'
     }
     throw err
+  }
+}
+
+export const register = async (prevState, formData) => {
+  const { username, password, passwordRepeat } = Object.fromEntries(formData)
+
+  if (password !== passwordRepeat) {
+    // throw new Error('Пароли не совпадают')
+    return { error: 'Пароли не совпадают' }
+  }
+  try {
+    connectToDB()
+
+    const user = await User.findOne({ username })
+
+    if (user) {
+      return { error: 'Имя пользователя уже занято' }
+    }
+
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(password, salt)
+
+    const newUser = new User({
+      username,
+      email: `${username}@${username}.ru`,
+      password: hashedPassword
+    })
+
+    await newUser.save()
+    console.log(
+      'register: пользователь и учетная запись сохранены в базе данных'
+    )
+
+    return { success: true }
+  } catch (err) {
+    console.log(err)
+    return { error: 'При создание User что то пошло не так' }
   }
 }
 // из документации

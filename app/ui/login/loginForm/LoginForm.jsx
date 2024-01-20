@@ -11,7 +11,7 @@ const LoginForm = () => {
   return (
     <form action={formAction} className={styles.form}>
       <h1>Login</h1>
-      <input type="text" placeholder="username" name="username" />
+      <input type="text" placeholder="ИМЯ не почта" name="username" />
       <input type="password" placeholder="password" name="password" />
       <button aria-disabled={pending}>Login</button>
       {state && state}
